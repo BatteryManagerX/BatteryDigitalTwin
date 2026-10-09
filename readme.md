@@ -16,7 +16,16 @@ Every command-line script supports `--help` for its full option list.
 
 If `data/split_data/` has already been prepared with its manifests and normalization file, start at the ROM section.
 
-Download the raw CSV files from [Hugging Face (placeholder link)](https://huggingface.co/datasets/your-username/battery-digital-twin-raw-csv) and put them in `data/raw_data/`, one file per vehicle. Replace this URL with the published dataset link before release. `data/`, `checkpoints/`, and `results/` are ignored by Git.
+Download the raw CSV files from the [Hugging Face dataset](https://huggingface.co/datasets/BatteryManagerX/BatteryDigitalTwin):
+
+```bash
+hf download BatteryManagerX/BatteryDigitalTwin \
+  --repo-type dataset \
+  --include "*.csv" \
+  --local-dir ./data/raw_data
+```
+
+The preprocessing script expects the CSV files directly in `data/raw_data/`, with one file per vehicle. `data/`, `checkpoints/`, and `results/` are ignored by Git.
 
 The first script filters and cleans the raw telemetry, constructs contiguous 10-second sequences, and assigns operating conditions C1–C4:
 
