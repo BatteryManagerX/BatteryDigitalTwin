@@ -5,3 +5,8 @@ __pycache__/
 checkpoints/
 
 results/
+
+.vscode/
+
+venv/
+
